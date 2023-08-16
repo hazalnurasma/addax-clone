@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Addax Giyim</title>
+    <meta charset="UTF-8" />
+    <meta name="Description" content="addax giyim" />
+    <meta name="Keywords" content="giyim,alışveriş,yönetim paneli,dashboard" />
+    <meta name="googlebot" content="noarchive" />
+    <meta name="Revisit-After" content="5 hour" />
+    <meta name="robots" content="index,contact" />
+    <meta name="copyright" content="2020-2021 Copyright ybs.deu.edu.tr" />
+    <link href="giyim.css" type="text/css" rel="stylesheet">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+
+<script>
+    window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2", // "light1", "light2", "dark1", "dark2"
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "En Çok Satan Kategoriler 2021"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}%",
+                dataPoints: [{
+                    y: 51.08,
+                    label: "Üst Giyim"
+                }, {
+                    y: 27.34,
+                    label: "Alt Giyim"
+                }, {
+                    y: 10.62,
+                    label: "Ev Giyim"
+                }, {
+                    y: 5.02,
+                    label: "Aksesuar"
+                }, {
+                    y: 4.07,
+                    label: "Çanta"
+                }, {
+                    y: 0.44,
+                    label: "Diğer"
+                }]
+            }]
+        });
+        chart.render();
+
+    }
+</script>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img class="logo" src="addaxLogo.png"><br>
+            <!--<span class="konum">Genel Bakış Sayfası</span>-->
+            <div class="menu">
+                <img class="icon" src="genelBakis.png">
+                <span class="span"><a href="index.html" target="_blank">Genel Bakış</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="yoneticiSayfasi.png">
+                <span class="span"><a href="yonSayfasi.html" target="_blank">Yönetici Sayfası</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="tedarikciler.png">
+                <span class="span"><a href="" target="_blank">Tedarikçiler</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="ik.png">
+                <span class="span"><a href="" target="_blank">İnsan Kaynakları</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="stokDurumu.png">
+                <span class="span"><a href="" target="_blank">Stok Durumu</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="maliIsler.png">
+                <span class="span"><a href="" target="_blank">Mali İşler</a></span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="syf">Genel Bakış</div>
+            <div class="header">
+                <span class="bir">ADDAX GİYİM ADMİN GİRİŞİ</span>
+                <div class="giris">
+                    <form action="kontrol.php" method="POST" target="_blank">
+                        <fieldset>
+                            <label for="kullaniciAdi">Kullanıcı Adı:</label>
+                            <input type="text" id="kullaniciAdi" name="kullaniciAdi" required="required" />
+                            <label for="sifre">Şifre:</label>
+                            <input type="password" id="sifre" name="sifre" required="required" />
+                            <input type="submit">
+                        </fieldset>
+                </div>
+            </div>
+
+            <div class="list">
+                <ul>
+                    <span class="kat"><hr>Kategoriler<hr></span>
+                    <li class="b">- Kadın Üst Giyim</li>
+                    <ul>
+                        <li>Sweatshirt</li>
+                        <li>Gömlek</li>
+                        <li>Bluz</li>
+                        <li>Tişört</li>
+                    </ul>
+                    <li class="b">- Kadın Alt Giyim</li>
+                    <ul>
+                        <li>Pantolon</li>
+                        <li>Eşofman Altı</li>
+                        <li>Şort</li>
+                        <li>Tayt</li>
+                    </ul>
+                    <li class="b">- Kadın Ev Giyim</li>
+                    <ul>
+                        <li>Pijama</li>
+                        <li>İç Giyim</li>
+                        <li>Ev Terlik</li>
+                    </ul>
+                    <li class="b">- Çanta</li>
+                    <ul>
+                        <li>Bel Çantası</li>
+                        <li>Kol Çantası</li>
+                        <li>Sırt Çantası</li>
+                    </ul>
+                    <li class="b">- Aksesuar</li>
+                    <ul>
+                        <li>Kolye</li>
+                        <li>Şapka</li>
+                        <li>Toka</li>
+                        <li>Kemer</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <div class="ilk">
+            <div id="chartContainer"></div>
+        </div>
+        <div class="secSidebar">
+            <span class="bas">Ayın Ürünleri</span>
+            <img class="pant" src="ayMomJean.PNG">
+            <span class="pantAc"><br>Krem Rengi Mom Jean</span>
+            <span class="fi">89,95 TL</span>
+            <img class="cant" src="ayTelBolCant.PNG">
+            <span class="cantAc"><br>Telefon Bölmeli Siyah Çanta<br></span>
+            <span class="fi">49,95 TL</span>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Addax Giyim l Yönetici Sayfası</title>
+    <meta charset="UTF-8" />
+    <meta name="Description" content="addax giyim" />
+    <meta name="Keywords" content="giyim,alışveriş,yönetim paneli,dashboard" />
+    <meta name="googlebot" content="noarchive" />
+    <meta name="Revisit-After" content="5 hour" />
+    <meta name="robots" content="index,contact" />
+    <meta name="copyright" content="2020-2021 Copyright ybs.deu.edu.tr" />
+    <link href="giyim.css" type="text/css" rel="stylesheet">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+
+<script>
+    window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainerSec", {
+            theme: "dark2", // "light1", "light2", "dark1"
+            animationEnabled: true,
+            exportEnabled: true,
+            title: {
+                text: "En Çok Satış Yapılan 10 Mağaza"
+            },
+            axisX: {
+                margin: 10,
+                labelPlacement: "inside",
+                tickPlacement: "inside"
+            },
+            axisY2: {
+                title: "Satışlar (Günde)",
+                titleFontSize: 14,
+                includeZero: true,
+                suffix: "bn"
+            },
+            data: [{
+                type: "bar",
+                axisYType: "secondary",
+                yValueFormatString: "#,###.##bn",
+                indexLabel: "{y}",
+                dataPoints: [{
+                    label: "Kırıkkale Cuma Caddesi",
+                    y: 3.25
+                }, {
+                    label: "Sinop Tuzca AVM",
+                    y: 3.32
+                }, {
+                    label: "Bursa Anka AVM",
+                    y: 3.63
+                }, {
+                    label: "İstanbul Sirkeci Caddesi",
+                    y: 3.72
+                }, {
+                    label: "İzmir Kıbrıs Şehitler",
+                    y: 3.90
+                }, {
+                    label: "Samsun City Mall AVM",
+                    y: 4.32
+                }, {
+                    label: "Ankara Via AVM",
+                    y: 4.66
+                }, {
+                    label: "Samsun Gazi Caddesi",
+                    y: 4.91
+                }, {
+                    label: "İzmir Optimum AVM",
+                    y: 6.13
+                }, {
+                    label: "İstanbul Cevahir AVM",
+                    y: 6.88
+                }]
+            }]
+        });
+        chart.render();
+
+        var chart2 = new CanvasJS.Chart("chartContainerThird", {
+            theme: "light2",
+            exportFileName: "Doughnut Chart",
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "En Çok Satılan Ürünler"
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: explodePie
+            },
+            data: [{
+                type: "doughnut",
+                innerRadius: 90,
+                showInLegend: true,
+                toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+                indexLabel: "{name} - #percent%",
+                dataPoints: [{
+                    y: 450,
+                    name: "Baskılı Pembe Hoodie"
+                }, {
+                    y: 120,
+                    name: "Siyah Mom Jean"
+                }, {
+                    y: 300,
+                    name: "Etnik Bandana"
+                }, {
+                    y: 800,
+                    name: "Fitilli Şort"
+                }, {
+                    y: 150,
+                    name: "Toparlayıcı Şort"
+                }, {
+                    y: 150,
+                    name: "Turuncu Crop Atlet"
+                }, {
+                    y: 250,
+                    name: "Others"
+                }]
+            }]
+        });
+        chart2.render();
+
+        function explodePie(e) {
+            if (typeof(e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+            } else {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+            }
+            e.chart2.render();
+        }
+
+        var chart3 = new CanvasJS.Chart("chartContainerFourth", {
+            animationEnabled: true,
+
+            title: {
+                text: "En Yüksek Performans Sahibi Elemanlar"
+            },
+            axisX: {
+                interval: 1
+            },
+            axisY2: {
+                interlacedColor: "rgba(1,77,101,.2)",
+                gridColor: "rgba(1,77,101,.1)",
+                title: "Performans Değerlendirme Ölçeği Puanı"
+            },
+            data: [{
+                type: "bar",
+                name: "companies",
+                axisYType: "secondary",
+                color: "#014D65",
+                dataPoints: [{
+                    y: 3,
+                    label: "Buse Erdem"
+                }, {
+                    y: 7,
+                    label: "Erkut Can"
+                }, {
+                    y: 5,
+                    label: "Çiğdem Suzan"
+                }, {
+                    y: 9,
+                    label: "Karan Aktepe"
+                }, {
+                    y: 7,
+                    label: "Sezin Terzi"
+                }, {
+                    y: 7,
+                    label: "Berk Yancı"
+                }, {
+                    y: 9,
+                    label: "Gamze Avcı"
+                }, {
+                    y: 8,
+                    label: "İhsan Kurtuluş"
+                }, {
+                    y: 11,
+                    label: "Ceren Sedef"
+                }, {
+                    y: 15,
+                    label: "Koray Yalçın"
+                }, ]
+            }]
+        });
+        chart3.render();
+
+        var chart4 = new CanvasJS.Chart("chartContainerFifth", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "dark2",
+            title: {
+                text: "En Çok Tercih Edilen Tedarikçiler"
+            },
+            data: [{
+                type: "pyramid",
+                toolTipContent: "<b>{label}</b>: {y}%",
+                indexLabelFontColor: "#fcfcfc",
+                indexLabelFontSize: 12,
+                indexLabel: "{label}({y}%)",
+                indexLabelPlacement: "inside",
+                dataPoints: [{
+                    y: 25,
+                    label: "A Taşıma"
+                }, {
+                    y: 25,
+                    label: "G Lojistik"
+                }, {
+                    y: 25,
+                    label: "Ö Networking"
+                }, {
+                    y: 40,
+                    label: "B Lojistik"
+                }, {
+                    y: 60,
+                    label: "P Taşıma"
+                }]
+            }]
+        });
+        chart4.render();
+
+    }
+</script>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img class="logo" src="addaxLogo.png"><br>
+            <!--<span class="konum">Genel Bakış Sayfası</span>-->
+            <div class="menu">
+                <img class="icon" src="genelBakis.png">
+                <span class="span"><a href="index.html" target="_blank">Genel Bakış</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="yoneticiSayfasi.png">
+                <span class="spanRen"><a href="yonSayfasi.html" target="_blank">Yönetici Sayfası</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="tedarikciler.png">
+                <span class="span"><a href="" target="_blank">Tedarikçiler</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="ik.png">
+                <span class="span"><a href="" target="_blank">İnsan Kaynakları</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="stokDurumu.png">
+                <span class="span"><a href="" target="_blank">Stok Durumu</a></span>
+            </div>
+            <div class="menu">
+                <img class="icon" src="maliIsler.png">
+                <span class="span"><a href="" target="_blank">Mali İşler</a></span>
+            </div>
+        </div>
+        <div class="contentSec">
+
+            <div class="headerSec">
+                <span class="birSec">ADDAX GİYİM ADMİN GİRİŞİ</span>
+                <div class="girisSec">
+                    <form action="kontrol.php" method="POST" target="_blank">
+                        <fieldset>
+                            <label for="kullaniciAdi">Kullanıcı Adı:</label>
+                            <input type="text" id="kullaniciAdi" name="kullaniciAdi" required="required" />
+                            <label for="sifre">Şifre:</label>
+                            <input type="password" id="sifre" name="sifre" required="required" />
+                            <input type="submit">
+                        </fieldset>
+                </div>
+            </div>
+            <div id="chartContainerSec"></div>
+            <div id="chartContainerThird"></div>
+            <div id="chartContainerFourth"></div>
+            <div id="chartContainerFifth"></div>
+
+            <div class="secSidebar">
+                <span class="bas">Ayın Ürünleri</span>
+                <img class="pant" src="ayMomJean.PNG">
+                <span class="pantAc"><br>Krem Rengi Mom Jean</span>
+                <span class="fi">89,95 TL</span>
+                <img class="cant" src="ayTelBolCant.PNG">
+                <span class="cantAc"><br>Telefon Bölmeli Siyah Çanta<br></span>
+                <span class="fi">49,95 TL</span>
+
+            </div>
+
+        </div>
+
+</body>
+
+</html>
